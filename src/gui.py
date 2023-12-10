@@ -8,7 +8,7 @@ class Gui(QWidget):
         self.adb = adb
         self.init_ui()
 
-    def init_ui(self):
+    def init_ui(self) -> None:
         self.setWindowTitle(self.adb.ip)
         self.setGeometry(100, 100, 300, 300)
 
@@ -32,8 +32,7 @@ class Gui(QWidget):
     def init_custom_link(self) -> QHBoxLayout:
         custom_link_layout = QHBoxLayout()
         custom_link_edit = QLineEdit(self)
-        custom_link_button = QPushButton("Send Custom Link", self)
-        custom_link_button.clicked.connect(lambda: self.send_link(custom_link_edit.text()))
+        custom_link_button = QPushButton("Send Custom Link", self, clicked=lambda: self.send_link(custom_link_edit.text()))
         custom_link_layout.addWidget(custom_link_edit)
         custom_link_layout.addWidget(custom_link_button)
         return custom_link_layout
